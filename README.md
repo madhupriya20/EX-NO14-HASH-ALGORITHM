@@ -27,9 +27,43 @@ To implement HASH ALGORITHM
 
 
 ## Program:
+```
+# Function to compute a simple hash using XOR and addition
+def compute_simple_hash(message):
+    temp = 0
+    
+    for ch in message:
+        temp = temp ^ ord(ch)       # XOR each character
+        temp = (temp + ord(ch)) % 256   # Add character value (limit to 1 byte)
+    
+    return temp
+
+
+# Step 1: Input the message
+message = input("Enter the message: ")
+
+# Step 2: Compute the hash
+hash_value = compute_simple_hash(message)
+
+# Step 3: Display the computed hash in hexadecimal
+print("Computed Hash (in hex):", format(hash_value, "02x"))
+
+# Step 4: Verify the hash
+received_hash = input("Enter the received hash (in hex): ")
+
+received_hash_value = int(received_hash, 16)
+
+# Step 5: Compare hashes
+if hash_value == received_hash_value:
+    print("Hash verification successful. Message is unchanged.")
+else:
+    print("Hash verification failed. Message has been altered.")
+```
 
 
 ## Output:
+<img width="445" height="120" alt="image" src="https://github.com/user-attachments/assets/18282a15-0932-4393-bf26-3d71ef403183" />
+
 
 ## Result:
 The program is executed successfully.
